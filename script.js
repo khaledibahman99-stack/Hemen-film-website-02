@@ -31,7 +31,17 @@ function setLanguage(lang) {
       btn.classList.remove("active");
     }
   });
-
+// Highlight active nav item
+const currentPage = window.location.pathname.split("/").pop().replace(".html", "") || "index";
+document.querySelectorAll(".lang-link").forEach(link => {
+  const href = link.getAttribute("href").replace(".html", "");
+  if (href === `/${currentPage}` || (currentPage === "index" && href === "/index")) {
+    link.classList.add("active");
+  } else {
+    link.classList.remove("active");
+  }
+});
+  
   // Show only elements for selected language
   langElements.forEach(el => {
     if (el.getAttribute("data-lang") === lang) {
@@ -83,3 +93,4 @@ mobileLinks.forEach(link => {
     }
   });
 });
+
