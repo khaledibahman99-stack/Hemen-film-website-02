@@ -99,6 +99,13 @@ a:hover {
 .nav-desktop a:hover::after {
   width: 100%;
 }
+.nav-desktop a.active,
+.nav-mobile a.active {
+  color: var(--accent-color);
+}
+.nav-desktop a.active::after {
+  width: 100%;
+}
 .header-right {
   display: flex;
   align-items: center;
@@ -620,3 +627,4 @@ a:hover {
   .btn { width: 100%; }
   .page-content { padding: 6rem 1rem 2rem; }
 }
+
