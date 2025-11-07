@@ -41,6 +41,11 @@ a:hover {
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
   z-index: 1000;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.header.scrolled {
+  background: rgba(15, 15, 15, 0.95);
+  border-bottom: 1px solid var(--border-color);
 }
 .header-content {
   max-width: 1400px;
@@ -54,6 +59,12 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+}
+.logo-section a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
 }
 .logo-img {
   height: 48px;
@@ -149,6 +160,7 @@ a:hover {
   padding: 1rem 2rem;
   border-bottom: 1px solid var(--border-color);
   font-weight: 500;
+  display: block;
 }
 .nav-mobile a:hover {
   background: rgba(176, 144, 199, 0.1);
@@ -258,40 +270,283 @@ a:hover {
   color: var(--accent-color);
 }
 
-/* Contact Page */
-.contact-container {
-  max-width: 800px;
-  margin: 0 auto;
+/* Films Page */
+.film-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  margin-bottom: 5rem;
+  padding-bottom: 5rem;
+  border-bottom: 1px solid var(--border-color);
 }
-.contact-info h2 {
+.film-section:last-child {
+  border-bottom: none;
+}
+.film-poster {
+  position: relative;
+}
+.film-poster img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+.film-poster img:hover {
+  transform: scale(1.02);
+}
+.film-details h2 {
   font-size: 2.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent-color);
+}
+.film-logline {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+.film-meta {
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+.film-crew h3,
+.film-teasers h3,
+.film-gallery h3 {
+  font-size: 1.5rem;
+  margin: 2.5rem 0 1rem;
+  color: var(--accent-color);
+}
+.film-crew ul {
+  list-style: none;
+  line-height: 2;
+}
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.gallery-grid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+.gallery-grid img:hover {
+  transform: scale(1.03);
+}
+.film-awards {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+
+/* About Page */
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  align-items: start;
+}
+.about-portrait img {
+  width: 100%;
+  max-height: 500px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.about-text h2 {
+  font-size: 2rem;
+  margin: 2.5rem 0 1.5rem;
+  color: var(--accent-color);
+}
+.about-text h2:first-child {
+  margin-top: 0;
+}
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+.artistic-statement p {
+  margin-bottom: 1.5rem;
+}
+
+/* Awards Page */
+.awards-hero {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+.awards-hero img {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.image-caption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(248, 248, 248, 0.7);
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+.awards-section {
+  margin-bottom: 5rem;
+}
+.awards-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
   color: var(--accent-color);
   text-align: center;
 }
-.contact-item {
-  margin-bottom: 3rem;
+.awards-grid {
+  display: grid;
+  gap: 2rem;
 }
-.contact-item h3 {
-  font-size: 1.5rem;
+.awards-grid.three-columns {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.award-item img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+.award-item img:hover {
+  transform: scale(1.03);
+}
+.section-note {
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(248, 248, 248, 0.7);
+  margin-top: 1.5rem;
+  font-style: italic;
+}
+
+/* Press Page */
+.press-quotes {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.press-quote {
+  border-left: 4px solid var(--accent-color);
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  background: rgba(176, 144, 199, 0.05);
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+.press-quote:hover {
+  background: rgba(176, 144, 199, 0.1);
+}
+.press-quote p {
+  font-size: 1.3rem;
+  font-style: italic;
   margin-bottom: 1rem;
+  line-height: 1.8;
+}
+.press-quote cite {
+  font-size: 1rem;
+  font-style: normal;
+  color: rgba(248, 248, 248, 0.8);
+  display: block;
+  margin-top: 1rem;
+}
+.press-links-section {
+  text-align: center;
+}
+.section-heading {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--accent-color);
+}
+.press-links {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.press-links li {
+  padding: 1rem;
+  background: rgba(176, 144, 199, 0.05);
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+.press-links li:hover {
+  background: rgba(176, 144, 199, 0.1);
+}
+.press-links a {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  text-decoration: none;
+  display: block;
+}
+
+/* Contact Page */
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.contact-info,
+.follow-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.contact-info h2,
+.follow-info h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--accent-color);
+  text-align: center;
+}
+.contact-item,
+.social-item {
+  margin-bottom: 1.5rem;
+}
+.contact-item h3,
+.social-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
   color: var(--accent-color);
 }
 .contact-item p,
-.contact-item a {
+.contact-item a,
+.social-item p,
+.social-item a {
   font-size: 1.2rem;
   line-height: 1.8;
 }
-.social-links {
-  list-style: none;
+.press-inquiry {
+  margin-top: 3rem;
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
 }
-.social-links li {
-  margin-bottom: 0.75rem;
-}
-.social-links a {
+.press-inquiry p {
   font-size: 1.1rem;
-  display: inline-block;
-  padding: 0.5rem 0;
+  line-height: 1.7;
 }
 
 /* Footer */
@@ -329,6 +584,16 @@ a:hover {
 }
 
 /* Responsive Design */
+@media (max-width: 992px) {
+  .film-section,
+  .about-container,
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+  .awards-grid.three-columns {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
 @media (max-width: 768px) {
   .nav-desktop { display: none; }
   .hamburger { display: flex; }
@@ -336,8 +601,14 @@ a:hover {
   .hero-title { font-size: 2rem; }
   .hero-subtitle { font-size: 1.1rem; }
   .page-title { font-size: 2rem; }
-  .footer-content { grid-template-columns: 1fr; gap: 2rem; }
-  .footer-right ul { grid-template-columns: 1fr; }
+  .film-details h2 { font-size: 2rem; }
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .footer-right ul {
+    grid-template-columns: 1fr;
+  }
 }
 @media (max-width: 480px) {
   .header-content { padding: 1rem; }
