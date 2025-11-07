@@ -18,7 +18,7 @@ if (hamburger && navMobile) {
   });
 }
 
-// Language switcher — fully functional
+// Language switcher — fully functional with block/inline handling
 const langButtons = document.querySelectorAll(".lang-btn");
 const langElements = document.querySelectorAll("[data-lang]");
 
@@ -35,10 +35,19 @@ function setLanguage(lang) {
   // Show only elements for selected language
   langElements.forEach(el => {
     if (el.getAttribute("data-lang") === lang) {
-      el.style.display = "inline";
+      // Detect if element is block or inline
+      const isBlock = getComputedStyle(el).display.includes("block");
+      el.style.display = isBlock ? "block" : "inline";
     } else {
       el.style.display = "none";
     }
+  });
+
+  // Update Wikipedia links dynamically
+  const wikiLinks = document.querySelectorAll('.wiki-link');
+  wikiLinks.forEach(link => {
+    const url = link.getAttribute(`data-wiki-${lang}`);
+    if (url) link.href = url;
   });
 
   // Update HTML direction for RTL languages
@@ -69,7 +78,7 @@ langButtons.forEach(btn => {
 const mobileLinks = document.querySelectorAll(".nav-mobile a");
 mobileLinks.forEach(link => {
   link.addEventListener("click", () => {
-    if (navMobile.classList.contains("active")) {
+    if (navMobile && navMobile.classList.contains("active")) {
       hamburger.click();
     }
   });
